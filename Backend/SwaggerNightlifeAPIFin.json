@@ -1,0 +1,1132 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the Rest API for the Nightlife Mobile App",
+    "version": "1.0.0",
+    "title": "Nightlife Rest API",
+    "contact": {
+      "email": "martingatzweiler@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "petstore.swagger.io",
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "Location",
+      "description": "Get Events and Venues based on your Location"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/Venue": {
+      "post": {
+        "tags": [
+          "Venue"
+        ],
+        "summary": "Add a new Venue to the store",
+        "description": "",
+        "operationId": "add Venue",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Venue object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Venue"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/Venue/{VenueID}": {
+      "get": {
+        "tags": [
+          "Venue"
+        ],
+        "summary": "Find Venue by ID",
+        "description": "Returns a single Venue",
+        "operationId": "getVenueById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Venue"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "VenueID not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Venue"
+        ],
+        "summary": "Updates a Venue with form data",
+        "description": "",
+        "operationId": "updatePetWithForm",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "ID of Venue that needs to be updated",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Name",
+            "in": "formData",
+            "description": "Updated name of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Type",
+            "in": "formData",
+            "description": "Updated Type of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "LocLat",
+            "in": "formData",
+            "description": "Updated LocLat of the Venue",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "LocLong",
+            "in": "formData",
+            "description": "Updated LocLong of the Venue",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "PriceIndex",
+            "in": "formData",
+            "description": "Updated PriceIndex of the Venue",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "EntryFee",
+            "in": "formData",
+            "description": "Updated EntryFee of the Venue",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "Age",
+            "in": "formData",
+            "description": "Updated Age of the Venue",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "LongDescription",
+            "in": "formData",
+            "description": "Updated LongDescription of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ShortDescription",
+            "in": "formData",
+            "description": "Updated ShortDescription of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AddressCity",
+            "in": "formData",
+            "description": "Updated AddressCity of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AddressPLZ",
+            "in": "formData",
+            "description": "Updated AddressPLZ of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AddressStreet",
+            "in": "formData",
+            "description": "Updated AddressPLZ of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AddressNr",
+            "in": "formData",
+            "description": "Updated AddressPLZ of the Venue",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Venue"
+        ],
+        "summary": "Deletes a Venue",
+        "description": "",
+        "operationId": "deleteVenue",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "VenueID id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Venue not found"
+          }
+        }
+      }
+    },
+    "/Event": {
+      "post": {
+        "tags": [
+          "Event"
+        ],
+        "summary": "Add a new Event",
+        "description": "",
+        "operationId": "addEvent",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Event object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/Event/{EventID}": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "summary": "Find Event by ID",
+        "description": "Returns a single Venue",
+        "operationId": "getEventById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "EventID",
+            "in": "path",
+            "description": "ID of Event to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Venue"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "EventID not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Event"
+        ],
+        "summary": "Updates a Venue with form data",
+        "description": "",
+        "operationId": "updateEventByID",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "EventID",
+            "in": "path",
+            "description": "ID of Venue that needs to be updated",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Name",
+            "in": "formData",
+            "description": "Updated name of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Type",
+            "in": "formData",
+            "description": "Updated Type of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "LocLat",
+            "in": "formData",
+            "description": "Updated LocLat of the Venue",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "LocLong",
+            "in": "formData",
+            "description": "Updated LocLong of the Venue",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "Date",
+            "in": "formData",
+            "description": "Updated Date of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "PriceIndex",
+            "in": "formData",
+            "description": "Updated PriceIndex of the Venue",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "EntryFee",
+            "in": "formData",
+            "description": "Updated EntryFee of the Venue",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "Age",
+            "in": "formData",
+            "description": "Updated Age of the Venue",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "LongDescription",
+            "in": "formData",
+            "description": "Updated LongDescription of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ShortDescription",
+            "in": "formData",
+            "description": "Updated ShortDescription of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AddressCity",
+            "in": "formData",
+            "description": "Updated AddressCity of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AddressPLZ",
+            "in": "formData",
+            "description": "Updated AddressPLZ of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AddressStreet",
+            "in": "formData",
+            "description": "Updated AddressPLZ of the Venue",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "AddressNr",
+            "in": "formData",
+            "description": "Updated AddressPLZ of the Venue",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Event"
+        ],
+        "summary": "Deletes a Event",
+        "description": "",
+        "operationId": "deleteEventById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "EventID",
+            "in": "path",
+            "description": "EventID id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Venue not found"
+          }
+        }
+      }
+    },
+    "/Week": {
+      "post": {
+        "tags": [
+          "Week"
+        ],
+        "summary": "Add a new Week",
+        "description": "",
+        "operationId": "addWeek",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "A Week Obejct for a Venue that should be added to the DB",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Week"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/Week/{VenueID}": {
+      "get": {
+        "tags": [
+          "Week"
+        ],
+        "summary": "Find Week by ID",
+        "description": "Returns a single Week",
+        "operationId": "getWeekById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "ID of the Week to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Week"
+            }
+          },
+          "400": {
+            "description": "Invalid WeekID supplied"
+          },
+          "404": {
+            "description": "WeekID not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Week"
+        ],
+        "summary": "Deletes a Week",
+        "description": "",
+        "operationId": "deleteWeekById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "VenueID id of the week to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid WeekID supplied"
+          },
+          "404": {
+            "description": "WeekID not found"
+          }
+        }
+      }
+    },
+    "/Week/{VenueID}/{WeekDayID}": {
+      "get": {
+        "tags": [
+          "Week"
+        ],
+        "summary": "Find Week Comment for a specific Day",
+        "description": "Returns a single Week Day",
+        "operationId": "getSingleWeekDayById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "ID of the Week to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "WeekDayID",
+            "in": "path",
+            "description": "ID of OpeningHours to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/CommentWeekDay"
+            }
+          },
+          "400": {
+            "description": "Invalid WeekID supplied"
+          },
+          "404": {
+            "description": "WeekID not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Week"
+        ],
+        "summary": "Updates a single Week Day for a given VenueID",
+        "description": "",
+        "operationId": "updateWeekByID",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "ID of Week that needs to be updated",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "WeekDayID",
+            "in": "path",
+            "description": "ID of OpeningHours to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "LongDescription",
+            "in": "formData",
+            "description": "LongDescription",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "ShortDescription",
+            "in": "formData",
+            "description": "ShortDescription",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Week"
+        ],
+        "summary": "Deletes a Week",
+        "description": "",
+        "operationId": "deleteSingleWeekDayById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "WeekID id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "WeekDayID",
+            "in": "path",
+            "description": "ID of OpeningHours to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid WeekID supplied"
+          },
+          "404": {
+            "description": "WeekID not found"
+          }
+        }
+      }
+    },
+    "/OpeningHours": {
+      "post": {
+        "tags": [
+          "OpeningHours"
+        ],
+        "summary": "Add new OpeningHours",
+        "description": "",
+        "operationId": "addOpeningHours",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Object of OpeningHours that needs to be added in the DB",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OpeningHours"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/OpeningHours/{VenueID}": {
+      "get": {
+        "tags": [
+          "OpeningHours"
+        ],
+        "summary": "Find OpeningHours by ID",
+        "description": "Returns a single OpeningHoursWeek",
+        "operationId": "getOpeningHoursById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "ID of OpeningHours to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/OpeningHours"
+            }
+          },
+          "400": {
+            "description": "Invalid OpeningHoursID supplied"
+          },
+          "404": {
+            "description": "OpeningHoursID not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "OpeningHours"
+        ],
+        "summary": "Deletes a OpeningHours",
+        "description": "",
+        "operationId": "deleteOpeningHoursById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "VenueID to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid VenueID supplied"
+          },
+          "404": {
+            "description": "VenueID not found"
+          }
+        }
+      }
+    },
+    "/OpeningHours/{VenueID}/{WeekDayID}": {
+      "get": {
+        "tags": [
+          "OpeningHours"
+        ],
+        "summary": "Find OpeningHours for a specific Day",
+        "description": "Returns a single OpeningHoursWeek",
+        "operationId": "getSingleOpeningHoursByID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "ID of OpeningHours to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "WeekDayID",
+            "in": "path",
+            "description": "ID of OpeningHours to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/OpeningHoursWeekDay"
+            }
+          },
+          "400": {
+            "description": "Invalid OpeningHoursID supplied"
+          },
+          "404": {
+            "description": "OpeningHoursID not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "OpeningHours"
+        ],
+        "summary": "Updates OpeningHours for a specific Day",
+        "description": "",
+        "operationId": "updateSingleOpeningHoursByID",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "ID of Week that needs to be updated",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "WeekDayID",
+            "in": "path",
+            "description": "ID of OpeningHours to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "DOpen",
+            "in": "formData",
+            "description": "Opening Time",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "DClose",
+            "in": "formData",
+            "description": "CLosing Time",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "OpeningHours"
+        ],
+        "summary": "Deletes OpeningHours for a speific Day",
+        "description": "",
+        "operationId": "deleteSingleOpeningHoursById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "VenueID",
+            "in": "path",
+            "description": "OpeningHoursID id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "WeekDayID",
+            "in": "path",
+            "description": "ID of OpeningHours to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid OpeningHoursID supplied"
+          },
+          "404": {
+            "description": "OpeningHours not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Event": {
+      "type": "object",
+      "properties": {
+        "EventID": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "LocLat": {
+          "type": "number"
+        },
+        "LocLong": {
+          "type": "number"
+        },
+        "Date": {
+          "type": "string"
+        },
+        "PriceIndex": {
+          "type": "number"
+        },
+        "EntryFee": {
+          "type": "number"
+        },
+        "Age": {
+          "type": "integer"
+        },
+        "LongDescription": {
+          "type": "string"
+        },
+        "ShortDescription": {
+          "type": "string"
+        },
+        "AddressCity": {
+          "type": "string"
+        },
+        "AddressPLZ": {
+          "type": "string"
+        },
+        "AddressStreet": {
+          "type": "string"
+        },
+        "AddressNr": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Event"
+      }
+    },
+    "Venue": {
+      "type": "object",
+      "properties": {
+        "VenueID": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "LocLat": {
+          "type": "number"
+        },
+        "LocLong": {
+          "type": "number"
+        },
+        "PriceIndex": {
+          "type": "number"
+        },
+        "EntryFee": {
+          "type": "number"
+        },
+        "Age": {
+          "type": "integer"
+        },
+        "LongDescription": {
+          "type": "string"
+        },
+        "ShortDescription": {
+          "type": "string"
+        },
+        "AddressCity": {
+          "type": "string"
+        },
+        "AddressPLZ": {
+          "type": "string"
+        },
+        "AddressStreet": {
+          "type": "string"
+        },
+        "AddressNr": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Venue"
+      }
+    },
+    "Week": {
+      "type": "object",
+      "properties": {
+        "VenueID": {
+          "type": "integer"
+        },
+        "Week": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "WeekDay": {
+                "type": "integer"
+              },
+              "LongDescription": {
+                "type": "string"
+              },
+              "ShortDescription": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "CommentWeekDay": {
+      "type": "object",
+      "properties": {
+        "WeekDay": {
+          "type": "integer"
+        },
+        "LongDescription": {
+          "type": "string"
+        },
+        "ShortDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "OpeningHours": {
+      "type": "object",
+      "properties": {
+        "VenueID": {
+          "type": "integer"
+        },
+        "Week": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "WeekDay": {
+                "type": "integer"
+              },
+              "Dopen": {
+                "type": "string"
+              },
+              "Dclose": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "OpeningHoursWeekDay": {
+      "type": "object",
+      "properties": {
+        "WeekDay": {
+          "type": "integer"
+        },
+        "LongDescription": {
+          "type": "string"
+        },
+        "ShortDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
